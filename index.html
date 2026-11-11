@@ -270,6 +270,11 @@ tr:last-child td { border-bottom: 0; }
 @media (max-width:1000px){.igcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.igcards{grid-template-columns:minmax(0,1fr)}.igcard{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);grid-template-rows:auto}.igcard__img{aspect-ratio:auto;min-height:100%}.item__a{justify-items:start}}
 
+.igembeds{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--s3);margin-top:var(--s3)}
+.igembed{margin:0;display:grid;gap:.6rem;align-content:start;min-width:0}
+.igembed iframe{width:100%;height:680px;border:1px solid var(--line);background:#fff;display:block}
+.igembed figcaption{display:flex;flex-wrap:wrap;gap:.4rem .75rem;align-items:center}
+.igembed strong{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -418,13 +423,13 @@ tr:last-child td { border-bottom: 0; }
         </div>
       </div>
       <p class="subhead">Publicaciones oficiales en Instagram</p>
-      <div class="igcards">
-        <a class="igcard" href="https://www.instagram.com/reel/De-aeOlAfv4/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/whisky.jpg')" role="img" aria-label="Tráiler · Escena de tensión"></span><span class="igcard__body"><span class="chip chip--ok">Reel · 19 s</span><strong>Tráiler · Escena de tensión</strong><span class="label">Ver en Instagram ↗</span></span></a>
-        <a class="igcard" href="https://www.instagram.com/reel/De9YpHkAYJ8/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/comedor.jpg')" role="img" aria-label="Avance del capítulo 1"></span><span class="igcard__body"><span class="chip chip--ok">Reel · 16 s</span><strong>Avance del capítulo 1</strong><span class="label">Ver en Instagram ↗</span></span></a>
-        <a class="igcard" href="https://www.instagram.com/p/De8c0C-DOJR/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/bs-05.jpg')" role="img" aria-label="Fotos de rodaje y arte"></span><span class="igcard__body"><span class="chip chip--ok">Carrusel</span><strong>Fotos de rodaje y arte</strong><span class="label">Ver en Instagram ↗</span></span></a>
-        <a class="igcard" href="https://www.instagram.com/p/De9e8ktl_Y6/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/oscar.jpg')" role="img" aria-label="Personajes: Eva y Oscar"></span><span class="igcard__body"><span class="chip chip--ok">Publicación</span><strong>Personajes: Eva y Oscar</strong><span class="label">Ver en Instagram ↗</span></span></a>
-        <a class="igcard" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener"><span class="igcard__img igcard__img--logo" style="background-image:url('assets/logo-sm.png')" role="img" aria-label="@mientrasteportesbien"></span><span class="igcard__body"><span class="chip chip--ok">Perfil oficial</span><strong>@mientrasteportesbien</strong><span class="label">Ver en Instagram ↗</span></span></a>
+      <div class="igembeds">
+        <figure class="igembed"><iframe src="https://www.instagram.com/reel/De-aeOlAfv4/embed/" title="Tráiler · Escena de tensión" loading="lazy" scrolling="no" allowfullscreen></iframe><figcaption><span class="chip chip--ok">Reel · 19 s</span> <strong>Tráiler · Escena de tensión</strong><a class="label" href="https://www.instagram.com/reel/De-aeOlAfv4/" target="_blank" rel="noopener">Ver en Instagram ↗</a></figcaption></figure>
+        <figure class="igembed"><iframe src="https://www.instagram.com/reel/De9YpHkAYJ8/embed/" title="Avance del capítulo 1" loading="lazy" scrolling="no" allowfullscreen></iframe><figcaption><span class="chip chip--ok">Reel · 16 s</span> <strong>Avance del capítulo 1</strong><a class="label" href="https://www.instagram.com/reel/De9YpHkAYJ8/" target="_blank" rel="noopener">Ver en Instagram ↗</a></figcaption></figure>
+        <figure class="igembed"><iframe src="https://www.instagram.com/p/De8c0C-DOJR/embed/" title="Fotos de rodaje y arte" loading="lazy" scrolling="no" allowfullscreen></iframe><figcaption><span class="chip chip--ok">Carrusel</span> <strong>Fotos de rodaje y arte</strong><a class="label" href="https://www.instagram.com/p/De8c0C-DOJR/" target="_blank" rel="noopener">Ver en Instagram ↗</a></figcaption></figure>
+        <figure class="igembed"><iframe src="https://www.instagram.com/p/De9e8ktl_Y6/embed/" title="Personajes: Eva y Oscar" loading="lazy" scrolling="no" allowfullscreen></iframe><figcaption><span class="chip chip--ok">Publicación</span> <strong>Personajes: Eva y Oscar</strong><a class="label" href="https://www.instagram.com/p/De9e8ktl_Y6/" target="_blank" rel="noopener">Ver en Instagram ↗</a></figcaption></figure>
       </div>
+      <div class="ctas galeria"><a class="btn" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener">Ver el perfil @mientrasteportesbien</a></div>
     </div>
   </section>
 
@@ -436,11 +441,11 @@ tr:last-child td { border-bottom: 0; }
         <p class="prose">El universo de <em>Mientras te portes bien</em> se construyó con un trabajo minucioso de puesta en escena, dirección de arte y ambientación de época. Esta sección reúne los registros del proceso creativo y del rodaje.</p>
       </div>
       <div class="bloques">
-        <div class="bloque"><h3>Detrás de cámara</h3><p>El trabajo del equipo técnico y artístico, la preparación de encuadres, luces y el rodaje en locación.</p><div class="minis"><img src="assets/bs-01.jpg" alt="Operación de cámara durante una toma en el living" loading="lazy" width="1400" height="788"><img src="assets/bs-02.jpg" alt="Claqueta y jirafa de sonido antes de filmar" loading="lazy" width="1400" height="788"><img src="assets/bs-03.jpg" alt="El equipo con la jirafa de sonido bajo la luz cálida de la casa" loading="lazy" width="1400" height="788"></div></div>
-        <div class="bloque"><h3>El universo de la serie</h3><p>La estética de los años 90 a través del vestuario, los objetos significativos, la utilería y la escenografía del hogar.</p><div class="minis"><img src="assets/bs-04.jpg" alt="Maquillaje y peinado del elenco antes de filmar" loading="lazy" width="1400" height="788"><img src="assets/bs-05.jpg" alt="Un ramo de flores sobre la mesa, con luz azul en la ventana" loading="lazy" width="1400" height="788"><img src="assets/bs-06.jpg" alt="Escena entre dos personajes, con vestuario y maquillaje de continuidad" loading="lazy" width="1400" height="788"></div></div>
-        <div class="bloque"><h3>Del rodaje a la pantalla</h3><p>La evolución narrativa y el proceso técnico, desde el guion hasta el montaje final.</p><div class="minis"><img src="assets/bs-07.jpg" alt="Cámara con monitor de campo durante el rodaje" loading="lazy" width="1400" height="788"><img src="assets/bs-08.jpg" alt="El equipo mirando el monitor con la imagen de la escena" loading="lazy" width="1400" height="788"><img src="assets/bs-09.jpg" alt="Monitor de campo en la oscuridad de la locación" loading="lazy" width="1400" height="788"></div></div>
+        <div class="bloque"><h3>Detrás de cámara</h3><p>El trabajo del equipo técnico y artístico, la preparación de encuadres, luces y el rodaje en locación.</p><div class="minis"><img src="assets/bs-01.jpg" alt="Operación de cámara durante una toma en el living" width="1100" height="619"><img src="assets/bs-02.jpg" alt="Claqueta y jirafa de sonido antes de filmar" width="1100" height="619"><img src="assets/bs-03.jpg" alt="El equipo con la jirafa de sonido bajo la luz cálida de la casa" width="1100" height="619"></div></div>
+        <div class="bloque"><h3>El universo de la serie</h3><p>La estética de los años 90 a través del vestuario, los objetos significativos, la utilería y la escenografía del hogar.</p><div class="minis"><img src="assets/bs-04.jpg" alt="Maquillaje y peinado del elenco antes de filmar" width="1100" height="619"><img src="assets/bs-05.jpg" alt="Un ramo de flores sobre la mesa, con luz azul en la ventana" width="1100" height="619"><img src="assets/bs-06.jpg" alt="Escena entre dos personajes, con vestuario y maquillaje de continuidad" width="1100" height="619"></div></div>
+        <div class="bloque"><h3>Del rodaje a la pantalla</h3><p>La evolución narrativa y el proceso técnico, desde el guion hasta el montaje final.</p><div class="minis"><img src="assets/bs-07.jpg" alt="Cámara con monitor de campo durante el rodaje" width="1100" height="619"><img src="assets/bs-08.jpg" alt="El equipo mirando el monitor con la imagen de la escena" width="1100" height="619"><img src="assets/bs-09.jpg" alt="Monitor de campo en la oscuridad de la locación" width="1100" height="619"></div></div>
       </div>
-      <figure class="bs-wide"><img src="assets/bs-10.jpg" alt="El equipo de realización reunido en la locación" loading="lazy" width="1400" height="788"><figcaption>El equipo de realización reunido en la locación</figcaption></figure>
+      <figure class="bs-wide"><img src="assets/bs-10.jpg" alt="El equipo de realización reunido en la locación" width="1100" height="619"><figcaption>El equipo de realización reunido en la locación</figcaption></figure>
       <div class="ctas galeria"><a class="btn" href="https://drive.google.com/drive/folders/1WjcK-pxsHIi9lFhFVic_tJrG7EprTdwW" target="_blank" rel="noopener">Explorar galería completa de fotos del rodaje</a></div>
       <p class="subhead">Cómo hicimos el reel de Oscar</p>
       <div class="bs-grid">
@@ -485,7 +490,7 @@ tr:last-child td { border-bottom: 0; }
       <div class="tabla tabla--wrap"><table>
         <thead><tr><th scope="col">Equipo</th><th scope="col">Integrantes</th><th scope="col">Responsabilidad</th></tr></thead>
         <tbody>
-          <tr><td>1 · Sitio web</td><td>Ezequiel Viale</td><td>Arquitectura, maquetado, integración y verificación técnica.</td></tr>
+          <tr><td>1 · Sitio web</td><td>Ezequiel Viale, Alessia Chitto, Nicanor Altamirano, Josefina Faginoli</td><td>Arquitectura, maquetado, integración y verificación técnica.</td></tr>
           <tr><td>2 · Estética y contenidos web</td><td>Tatiana Barrera, Alessia Chitto, Lola Martínez, Florencia Lastra, Jazmín Regondi, Nicanor Altamirano</td><td>Identidad visual, textos, backstage y repositorio.</td></tr>
           <tr><td>3 · Contenidos para redes</td><td>Bacile, Faginoli, Lima, Pinelle, Salomón</td><td>Guion, edición, sonido y gráfica de los spots.</td></tr>
           <tr><td>4 · Investigación y guía de redes</td><td>Cuatro integrantes, uno por rol</td><td>Investigación de Instagram y de TikTok (funcionamiento, público, formatos e interacción), configuración de las cuentas y adaptación editorial (escritura, etiquetas, menciones y portadas).</td></tr>
