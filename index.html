@@ -1,84 +1,265 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Mientras te portes bien · Serie web</title>
-<meta name="description" content="Serie de ficción de 3 episodios ambientada en la Córdoba de los años 90. Sitcom por fuera, thriller por dentro.">
+<meta name="description" content="Serie web en tres capítulos sobre la violencia que se esconde detrás de una vida perfecta. Estudiantes de Comunicación Audiovisual, Universidad Blas Pascal.">
+<link rel="icon" href="assets/logo-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="nav">
-  <a class="brand" href="#inicio">Mientras te portes bien</a>
-  <button class="burger" aria-label="Abrir menú" aria-expanded="false">Menú</button>
-  <nav id="menu">
-    <a href="#serie">La serie</a><a href="#capitulos">Capítulos</a><a href="#equipo">Equipo</a>
-    <a href="#backstage">Backstage</a><a href="#difusion">Difusión</a><a href="#repositorio">Repositorio</a>
-  </nav>
+
+<div class="alerta" role="note"><div class="wrap"><b>Línea 144</b><span>Si estás atravesando una situación de violencia de género o conocés a alguien que la vive, llamá a la Línea 144. Es un servicio gratuito, confidencial y disponible las 24 horas en todo el país.</span></div></div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="bar__logo" href="#inicio" aria-label="Mientras te portes bien, inicio"><img src="assets/logo-sm.png" alt="Mientras te portes bien" width="112" height="60"></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#serie">La serie</a><a href="#capitulos">Capítulos</a><a href="#personajes">Personajes</a>
+      <a href="#difusion">Difusión</a><a href="#backstage">Backstage</a><a href="#equipo">Equipo</a>
+      <a class="nav__repo" href="#repositorio">Repositorio</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-<section class="hero" id="inicio">
-  <h1>Mientras te<br>portes bien</h1>
-  <p class="tag">Serie de ficción · Córdoba, años 90 · 3 episodios</p>
-  <p class="lede">Una casa ordenada, un matrimonio ejemplar y risas grabadas. Hasta que se cortan.</p>
-  <a class="btn" href="#capitulos">Ver los capítulos</a>
-</section>
-
-<section class="sec" id="serie">
-  <div class="wrap two">
-    <div>
-      <h2>La serie</h2>
-      <p>En la Córdoba de los años 90, Eva parece tener la vida que muchas personas consideran ideal: una casa ordenada, un matrimonio estable y un marido exitoso. Detrás de esa imagen de perfección se esconde una realidad marcada por el control, la manipulación y la violencia.</p>
-      <p>Cuando descubre que está embarazada, Eva se enfrenta a una decisión que puede cambiar su vida para siempre. Atrapada en un matrimonio del que teme no poder escapar, deberá encontrar la manera de recuperar su libertad.</p>
-      <p>Combinando sitcom y thriller psicológico, la serie vuelve incómodo lo cotidiano: las apariencias esconden algo mucho más oscuro.</p>
+  <!-- ===== PORTADA ===== -->
+  <section class="hero" id="inicio" aria-label="Presentación">
+    <div class="hero__img" role="img" aria-label="Oscar sentado en el sillón del living, con un vaso de whisky"></div>
+    <div class="wrap">
+      <p class="label hero__kicker">Ficción audiovisual · 3 episodios · Córdoba, Argentina</p>
+      <h1><img class="hero__logo" src="assets/logo.png" alt="Mientras te portes bien" width="1100" height="589"></h1>
+      <p class="hero__bajada">Una serie web que navega entre la ligereza de una sitcom de los años 90 y la tensión claustrofóbica del thriller psicológico doméstico.</p>
+      <figure class="quote">
+        <blockquote>“Mientras te portes bien, nada malo te va a pasar.”</blockquote>
+        <figcaption class="label">Oscar · Capítulo 1</figcaption>
+      </figure>
+      <div class="ctas">
+        <a class="btn" href="#capitulos">Ver los capítulos</a>
+        <a class="btn btn--ghost" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener">Instagram @mientrasteportesbien</a>
+      </div>
     </div>
-    <div>
-      <h3>Temática central</h3>
-      <p>La violencia de género en el ámbito doméstico: el control psicológico, la manipulación, el miedo y la dependencia que dificultan abandonar una relación violenta.</p>
-      <p>También, la distancia entre la imagen pública de una pareja y lo que ocurre en la intimidad. La casa, al principio cálida y familiar, se convierte de a poco en una prisión emocional.</p>
-      <h3>Sinopsis</h3>
-      <p>Eva, ama de casa de 30 años, vive con Oscar, un reconocido abogado carismático frente a los demás que en la intimidad ejerce violencia y control sobre ella. Una visita inesperada desencadena una discusión que pone en riesgo el plan de Eva y la obliga a enfrentarse a Oscar. Lo que empezó como una comedia familiar de los 90 se vuelve una huida desesperada.</p>
+  </section>
+
+  <!-- ===== LA SERIE ===== -->
+  <section class="band" id="serie">
+    <div class="wrap"><div class="serie">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="label">La serie</p>
+        <h2>Una vida perfecta, puertas afuera</h2>
+        <div class="prose" style="margin-top:var(--s2)">
+          <p class="lede">En la Córdoba de los años 90, Eva parece tener la vida que muchos consideran ideal: un hogar cálido, un matrimonio estable y un esposo profesional y reconocido.</p>
+          <p>Sin embargo, detrás de esa fachada de perfección se oculta una realidad marcada por el control, la manipulación y la violencia psicológica y física.</p>
+          <p>Cuando Eva descubre que está embarazada, entiende que debe tomar una decisión irreversible para no permitir que su hijo crezca en ese entorno. Atrapada en una casa que se transforma de a poco en una prisión emocional, iniciará un plan desesperado para recuperar su libertad.</p>
+        </div>
+        <div class="tema">
+          <p class="label" style="margin-bottom:.4rem">Temática central</p>
+          <p>La violencia de género en el ámbito doméstico, con foco en los mecanismos invisibles del control psicológico, el aislamiento y el miedo que dificultan que una víctima pueda salir de una relación violenta.</p>
+          <p style="margin-top:var(--s2);font-size:1.05rem;color:var(--muted)">A través del contraste entre la imagen pública perfecta de la pareja y lo que se vive en la intimidad, la serie usa elementos de la sitcom clásica y los transforma en una experiencia incómoda y reveladora.</p>
+        </div>
+      </div>
+      <aside class="ficha" aria-label="Ficha de la serie">
+        <p class="label" style="color:var(--pill)">Ficha</p>
+        <dl>
+          <dt>Formato</dt><dd>Serie web de 3 capítulos para YouTube</dd>
+          <dt>Género</dt><dd>Drama psicológico y suspenso, con fachada de sitcom</dd>
+          <dt>Época</dt><dd>Años noventa</dd>
+          <dt>Lugar</dt><dd>Córdoba, Argentina</dd>
+          <dt>Público</dt><dd>Mayores de 20 años</dd>
+          <dt>Realización</dt><dd>Estudiantes de Comunicación Audiovisual, Universidad Blas Pascal</dd>
+        </dl>
+        <p class="aviso"><strong>Advertencia:</strong> la serie muestra situaciones de violencia psicológica y física.</p>
+      </aside>
+    </div></div>
+  </section>
+
+  <!-- ===== CAPÍTULOS =====
+       Para publicar un capítulo: cambiá el chip "Próximo estreno" por <span class="chip chip--ok">Disponible</span>,
+       reemplazá el botón deshabilitado por <a class="btn" href="LINK-DE-YOUTUBE">Ver en YouTube</a> y actualizá la fecha. -->
+  <section class="band" id="capitulos">
+    <div class="wrap">
+      <div class="sec-head"><p class="label">Capítulos</p><h2>Tres capítulos, una decisión</h2></div>
+      <div class="caps">
+        <article class="cap" aria-labelledby="cap1-t">
+          <div class="cap__img" style="background-image:url('assets/comedor.jpg');background-position:center 40%" role="img" aria-label="Oscar en la mesa del comedor"><span class="cap__num" aria-hidden="true">1</span></div>
+          <div class="cap__body">
+            <p class="label">Capítulo 1</p><h3 id="cap1-t">Apariencia</h3>
+            <p>En una reunión de amigos para ver un partido de fútbol, Oscar despliega su encanto y simpatía habitual mientras Eva cumple el rol de la esposa perfecta. Entre bromas y comentarios cotidianos, pequeñas fisuras revelan que algo no está bien. Cuando los invitados se van y la puerta se cierra, la fachada cómica se derrumba para dar paso a una amenaza silenciosa.</p>
+            <div class="cap__meta"><span class="chip chip--ok">Disponible en YouTube</span></div>
+          </div>
+          <div class="cap__actions"><!-- reemplazá href por el link del capítulo --><a class="btn" href="https://www.youtube.com/@mientrasteportesbien" target="_blank" rel="noopener">Ver en YouTube</a></div>
+        </article>
+        <article class="cap" aria-labelledby="cap2-t">
+          <div class="cap__img" style="background-image:url('assets/whisky.jpg');background-position:center 45%" role="img" aria-label="Un vaso de whisky con hielo sobre la mesa"><span class="cap__num" aria-hidden="true">2</span></div>
+          <div class="cap__body">
+            <p class="label">Capítulo 2</p><h3 id="cap2-t">Quiebre</h3>
+            <p>La confirmación de un embarazo enfrenta a Eva con un futuro que no puede postergar. Tras compartir sus temores con Romina, su amiga y médica, comprende que huir no es una opción segura y que necesita actuar. La tensión acumulada en el hogar la lleva a tomar una decisión irreversible.</p>
+            <div class="cap__meta"><span class="chip chip--soon">Próximo estreno</span><span class="pending">Fecha a confirmar</span></div>
+          </div>
+          <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">En YouTube el día del estreno</span></div>
+        </article>
+        <article class="cap" aria-labelledby="cap3-t">
+          <div class="cap__img faros" role="img" aria-label="Los faros de un auto en una calle a oscuras"><span class="cap__num" aria-hidden="true">3</span></div>
+          <div class="cap__body">
+            <p class="label">Capítulo 3</p><h3 id="cap3-t">No mires atrás</h3>
+            <p>Una visita inesperada desata los celos de Oscar y quiebra el plan de Eva. La tensión contenida estalla en una confrontación directa y desesperada, en la que Eva deberá luchar por su vida y tomar una resolución definitiva para no mirar atrás.</p>
+            <div class="cap__meta"><span class="chip chip--soon">Próximo estreno</span><span class="pending">Fecha a confirmar</span></div>
+          </div>
+          <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">En YouTube el día del estreno</span></div>
+        </article>
+      </div>
     </div>
-  </div>
-  <div class="wrap"><aside class="help"><strong>Si vivís violencia de género, llamá al 144.</strong> Es gratuita, confidencial y atiende las 24 horas en todo el país. <span>Contiene violencia psicológica y física. Para mayores de 20 años.</span></aside></div>
-</section>
+  </section>
 
-<section class="sec arc" id="capitulos">
-  <div class="wrap"><h2>Capítulos</h2><p class="sub">Tres episodios que se oscurecen a medida que avanza la historia.</p></div>
-  <div class="wrap chapters" id="chapters"></div>
-</section>
+  <!-- ===== PERSONAJES ===== -->
+  <section class="band" id="personajes">
+    <div class="wrap">
+      <div class="sec-head"><p class="label">Personajes y elenco</p><h2>Quiénes viven en esta casa</h2></div>
+      <div class="reparto">
+        <figure class="oscar" style="margin:0">
+          <img src="assets/oscar.jpg" alt="Oscar en el sillón, con un vaso de whisky en la mano" width="1024" height="768">
+          <figcaption class="prose">
+            <h3 style="color:var(--amber)">Oscar</h3>
+            <p>Abogado, exitoso y querido por sus amigos. En público es carismático y servicial; en la intimidad controla a Eva con chistes que humillan y amenazas en voz baja.</p>
+            <p class="label">Gustavo Máximo Luna</p>
+          </figcaption>
+        </figure>
+        <ul class="personas">
+          <li><h3>Eva</h3><p>Esposa de Oscar. Sostiene la vida perfecta que él muestra y vive con miedo detrás de ella.<span class="label actor">Rocío Álvarez</span></p></li>
+          <li><h3>Romina</h3><p>Médica y amiga de Eva. Es la primera que le ofrece refugio.<span class="label actor">María Elena Ventura</span></p></li>
+          <li><h3>Martín</h3><p>El vecino. Su llegada en el peor momento lo cambia todo.<span class="label actor">Matías Albarracín</span></p></li>
+          <li><h3>María</h3><p>Amiga de Eva.<span class="label actor">Candelaria Medina Ávalo</span></p></li>
+          <li><h3>Carlos</h3><p>Invitado a la reunión del capítulo 1.<span class="label actor">Mario Ariel Encina Lanús</span></p></li>
+          <li><h3>Pedro</h3><p>Invitado a la reunión del capítulo 1.<span class="label actor">Facundo García</span></p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section class="sec" id="equipo">
-  <div class="wrap"><h2>Equipo de producción</h2>
-    <h3>Realización de la serie (TRTV y EeI)</h3><div class="people" id="team-series"></div>
-    <h3>Desarrollo y comunicación (TECI-II)</h3><div class="people" id="team-teci"></div>
-  </div>
-</section>
+  <!-- ===== DIFUSIÓN ===== -->
+  <section class="band" id="difusion">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Piezas de difusión</p><h2>Lo que publicamos en redes</h2>
+        <p class="prose">La campaña contrapone el humor del rodaje con la intriga del relato para conectar con la audiencia y generar reflexión sobre la temática central. Acá reunimos las piezas gráficas, los teasers y los spots desarrollados para Instagram y TikTok.</p>
+      </div>
+      <div class="difusion">
+        <figure class="reel" style="margin:0">
+          <video controls playsinline preload="metadata" poster="assets/reel-oscar-poster.jpg" src="assets/reel-oscar.mp4" aria-label="Reel de Oscar hablando a cámara"></video>
+          <figcaption class="label">Reel · “Las reglas de una casa perfecta” · 9:16 · 37 s</figcaption>
+        </figure>
+        <div class="prose">
+          <h3>Las reglas de una casa perfecta</h3>
+          <p>Un reel vertical en el que Oscar, sentado a la mesa, intenta explicar lo que pasó la noche anterior. Muestra su cara amable y deja ver la amenaza. Lo hicimos con inteligencia artificial: HeyGen para animar a Oscar, ElevenLabs para la voz y los sonidos e Higgsfield para los planos de detalle.</p>
+          <ul class="spots" aria-label="Spots de los capítulos">
+            <li><div><strong>Spot · Capítulo 1</strong><span class="label">Instagram y TikTok · hasta 1 min</span></div><span class="chip chip--todo">En producción</span></li>
+            <li><div><strong>Spot · Capítulo 2</strong><span class="label">Instagram y TikTok · hasta 1 min</span></div><span class="chip chip--todo">En producción</span></li>
+            <li><div><strong>Spot · Capítulo 3</strong><span class="label">Instagram y TikTok · hasta 1 min</span></div><span class="chip chip--todo">En producción</span></li>
+          </ul>
+          <div class="ig"><a class="btn btn--ghost" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener">Ver en Instagram</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="sec dark" id="backstage">
-  <div class="wrap"><h2>Backstage</h2><p class="sub">Cómo se hizo la serie.</p>
-    <div id="backstage-blocks"></div></div>
-</section>
+  <!-- ===== BACKSTAGE ===== -->
+  <section class="band" id="backstage">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Backstage</p><h2>Detrás de cámara</h2>
+        <p class="prose">El universo de <em>Mientras te portes bien</em> se construyó con un trabajo minucioso de puesta en escena, dirección de arte y ambientación de época. Esta sección reúne los registros del proceso creativo y del rodaje.</p>
+      </div>
+      <div class="bloques">
+        <div class="bloque"><h3>Detrás de cámara</h3><p>El trabajo del equipo técnico y artístico, la preparación de encuadres, luces y el rodaje en locación.</p><div class="slot"><span class="pending">Foto de rodaje<br>pendiente</span></div></div>
+        <div class="bloque"><h3>El universo de la serie</h3><p>La estética de los años 90 a través del vestuario, los objetos significativos, la utilería y la escenografía del hogar.</p><div class="slot"><span class="pending">Foto de dirección de arte<br>pendiente</span></div></div>
+        <div class="bloque"><h3>Del rodaje a la pantalla</h3><p>La evolución narrativa y el proceso técnico, desde el guion hasta el montaje final.</p><div class="slot"><span class="pending">Foto o video<br>pendiente</span></div></div>
+      </div>
+      <!-- Para reemplazar un recuadro: poné la foto en assets/ y cambiá <div class="slot">…</div> por <img src="assets/NOMBRE.jpg" alt="descripción"> -->
+      <p class="subhead">Cómo hicimos el reel de Oscar</p>
+      <div class="bs-grid">
+        <figure><img src="assets/comedor.jpg" alt="Oscar ubicado en el comedor de la locación" width="1024" height="760"><figcaption>Oscar en el comedor de la locación, armado a partir de dos fotos</figcaption></figure>
+        <figure><img src="assets/bacha.jpg" alt="Las manos de Eva lavando una copa en la bacha" width="1024" height="559"><figcaption>Referencia para el recuerdo de Eva en la cocina</figcaption></figure>
+        <figure><img src="assets/botella.jpg" alt="Una botella de vino rota sobre el piso de baldosas" width="1024" height="559"><figcaption>Referencia para el plano cenital de la botella rota</figcaption></figure>
+      </div>
+    </div>
+  </section>
 
-<section class="sec" id="difusion">
-  <div class="wrap"><h2>Piezas de difusión</h2><p class="sub">Spots, teasers y publicaciones para redes. Instagram y TikTok: <a href="https://www.instagram.com/mientrasteportesbien" target="_blank" rel="noopener">@mientrasteportesbien</a></p>
-    <div class="grid" id="pieces"></div></div>
-</section>
+  <!-- ===== EQUIPO ===== -->
+  <section class="band" id="equipo">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Equipo de producción y roles</p><h2>Quiénes hicimos la serie</h2>
+        <p class="prose">Dos categorías: quienes realizaron la serie para TRTV y EeI, y quienes desarrollaron la web y la difusión en redes para TECI-II.</p>
+      </div>
+      <p class="subhead" style="margin-top:0">A · Realización audiovisual · TRTV y EeI</p>
+      <div class="tabla"><table>
+        <thead><tr><th scope="col">Rol</th><th scope="col">Integrante</th></tr></thead>
+        <tbody>
+          <tr><td>Eva</td><td>Rocío Álvarez</td></tr>
+          <tr><td>Oscar</td><td>Gustavo Máximo Luna</td></tr>
+          <tr><td>Romina</td><td>María Elena Ventura</td></tr>
+          <tr><td>Martín</td><td>Matías Albarracín</td></tr>
+          <tr><td>Carlos</td><td>Mario Ariel Encina Lanús</td></tr>
+          <tr><td>Pedro</td><td>Facundo García</td></tr>
+          <tr><td>María</td><td>Candelaria Medina Ávalo</td></tr>
+          <tr><td>Equipo técnico</td><td class="pending">Guion, dirección, fotografía, sonido, arte y montaje: nombres a confirmar según los créditos finales</td></tr>
+        </tbody>
+      </table></div>
+      <p class="subhead">B · Desarrollo web y difusión en redes · TECI-II</p>
+      <div class="tabla tabla--wrap"><table>
+        <thead><tr><th scope="col">Equipo</th><th scope="col">Integrantes</th><th scope="col">Responsabilidad</th></tr></thead>
+        <tbody>
+          <tr><td>1 · Sitio web</td><td>Ezequiel Viale</td><td>Arquitectura, maquetado, integración y verificación técnica.</td></tr>
+          <tr><td>2 · Estética y contenidos web</td><td>Tatiana Barrera, Alessia Chitto, Lola Martínez, Florencia Lastra, Jazmín Regondi, Nicanor Altamirano</td><td>Identidad visual, textos, backstage y repositorio.</td></tr>
+          <tr><td>3 · Contenidos para redes</td><td>Bacile, Faginoli, Lima, Pinelle, Salomón</td><td>Guion, edición, sonido y gráfica de los spots.</td></tr>
+          <tr><td>4 · Investigación y guía de redes</td><td class="pending">A confirmar</td><td>Instagram y TikTok, perfiles y guía de publicación.</td></tr>
+          <tr><td>5 · Promoción y audiencia</td><td>Cristóbal Lühning, Lorenzo Díaz, Gina Roberts, Manuel González</td><td>Calendario, publicación, comentarios y métricas.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
 
-<section class="sec olive" id="repositorio">
-  <div class="wrap"><h2>Repositorio del cursado</h2><p class="sub">Documentos y videos de TECI-II, TRTV y EeI.</p>
-    <ul class="repo" id="repo"></ul></div>
-</section>
+  <!-- ===== REPOSITORIO ===== -->
+  <section class="band repo" id="repositorio">
+    <div class="wrap">
+      <div class="sec-head"><p class="label">Repositorio académico</p><h2>Materiales del cursado</h2>
+        <p class="prose">Las actividades de TECI-II y los documentos de producción de la serie, en un solo lugar.</p></div>
+      <div class="repo-groups">
+        <div class="repo-group"><h3>TECI-II</h3><ul class="items">
+          <li class="item"><span class="item__t">Videopodcast · Actividad 1</span><span class="item__d">Producción audiovisual inicial de integración de contenidos académicos.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
+          <li class="item"><span class="item__t">“Las reglas de una casa perfecta” · Actividad 2</span><span class="item__d">Promo técnica realizada con inteligencia artificial sobre la perspectiva de Oscar.</span><span class="item__a"><a href="#difusion">Ver video</a></span></li>
+          <li class="item"><span class="item__t">Actividad 3 · Estética y contenidos web</span><span class="item__d">Identidad visual, redacción de contenidos y backstage.</span><span class="item__a"><a href="docs/act-3-tecii.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 3 · Investigación de redes</span><span class="item__d">Informe sobre Instagram y YouTube, estrategia y configuración de cuentas.</span><span class="item__a"><a href="docs/tecii-tp-3.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 3 · Contenidos para redes</span><span class="item__d">Propuesta promocional y guiones de los spots.</span><span class="item__a"><a href="docs/trabajo-practico-3.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 3 · Promoción y seguimiento de audiencia</span><span class="item__d">Plan de campaña, calendario y métricas.</span><span class="item__a"><a href="docs/actividad-3-objetivo-5.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+        </ul></div>
+        <div class="repo-group"><h3>TRTV y EeI</h3><ul class="items">
+          <li class="item"><span class="item__t">Guion técnico · Capítulo 1 · Apariencia</span><span class="item__d">Guion técnico completo del primer capítulo.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
+          <li class="item"><span class="item__t">Guion técnico · Capítulo 2 · Quiebre</span><span class="item__d">Guion técnico completo del segundo capítulo.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
+          <li class="item"><span class="item__t">Guion técnico · Capítulo 3 · No mires atrás</span><span class="item__d">Guion técnico completo del tercer capítulo.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
+          <li class="item"><span class="item__t">Plan de rodaje</span><span class="item__d">Plan de rodaje oficial de la serie.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <p>Este trabajo fue realizado por estudiantes de Comunicación Audiovisual de la Universidad Blas Pascal, en el marco de una actividad académica que integra las asignaturas TECI-II, TRTV y EeI.</p>
-  <p><a href="mailto:mientrasteportesbien@gmail.com">mientrasteportesbien@gmail.com</a> · Si vivís violencia de género, llamá al 144.</p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="ayuda" role="note" aria-label="Línea 144">
+      <span class="ayuda__num" aria-hidden="true">144</span>
+      <p>Si estás atravesando una situación de violencia de género o conocés a alguien que la vive, llamá a la Línea 144. Es gratuita, confidencial y atiende las 24 horas, todos los días del año.</p>
+    </div>
+    <p class="inst">Este trabajo fue realizado por estudiantes de Comunicación Audiovisual de la Universidad Blas Pascal, en el marco de una actividad académica que integra las asignaturas TECI-II, TRTV y EeI.</p>
+    <div class="foot__row">
+      <img src="assets/logo-sm.png" alt="Mientras te portes bien" width="150" height="80">
+      <a href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener" class="label" style="color:var(--amber-hi)">@mientrasteportesbien</a>
+    </div>
+  </div>
 </footer>
-<script src="app.js"></script>
 </body>
 </html>
