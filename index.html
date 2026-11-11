@@ -9,7 +9,268 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="styles.css">
+<style>
+/* Layout: una casa de noche, iluminada por lámparas. Bandas a todo el ancho, contenido en una columna de 1120px;
+   el título gigante y condensado como el logo, el texto en una serif de lectura. Un solo tema oscuro, a propósito. */
+:root {
+  --night: #0f0c0a;     /* fondo: la casa a oscuras */
+  --wall: #18130f;      /* superficies */
+  --wall-2: #221a14;
+  --line: #3a2f26;
+  --cream: #f1e8d6;     /* texto principal (crema del logo) */
+  --muted: #a99c89;
+  --amber: #d1820d;     /* naranja del logo */
+  --amber-hi: #e9a23b;  /* naranja para texto chico sobre oscuro */
+  --pill: #f2d480;      /* amarillo de la etiqueta del logo */
+  --display: "Anton", "Oswald", "Arial Narrow", Impact, sans-serif;
+  --text: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --s1: .75rem; --s2: 1rem; --s3: 1.5rem; --s4: 2.5rem; --s5: 4rem; --s6: 6rem;
+  --max: 1120px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  background: var(--night); color: var(--cream);
+  font-family: var(--text); font-size: 1.125rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--night); }
+a { color: var(--amber-hi); }
+a:focus-visible, .btn:focus-visible, summary:focus-visible { outline: 2px solid var(--pill); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; letter-spacing: .01em; text-wrap: balance; margin: 0; text-transform: uppercase; }
+h2 { font-size: clamp(2.6rem, 7vw, 4.6rem); color: var(--cream); }
+h3 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); }
+p { margin: 0; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.band { padding-block: var(--s6); border-top: 1px solid var(--line); }
+.label { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.3rem; line-height: 1.55; max-width: 38ch; }
+.prose { display: grid; gap: var(--s2); max-width: 62ch; }
+.sec-head { display: grid; gap: var(--s2); margin-bottom: var(--s4); }
+.pending { font-family: var(--mono); font-size: .8rem; letter-spacing: .06em; color: var(--muted); font-style: normal; }
+
+/* ---------- barra superior ---------- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--night) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; align-items: center; gap: var(--s3); min-height: 60px; }
+.bar__logo { flex: none; display: block; line-height: 0; }
+.bar__logo img { width: 112px; height: auto; }
+.nav { display: flex; gap: var(--s3); overflow-x: auto; scrollbar-width: none; min-width: 0; margin-left: auto; padding-block: 4px; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { flex: none; font-family: var(--mono); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); text-decoration: none; padding-block: 6px; border-bottom: 1px solid transparent; }
+.nav a:hover { border-bottom-color: var(--amber); }
+.nav a.nav__repo { color: var(--pill); }
+
+/* ---------- portada ---------- */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero__img {
+  position: absolute; inset: 0; z-index: -2;
+  background: url("assets/living.jpg") center 38% / cover no-repeat;
+  filter: saturate(.78) brightness(.5) contrast(1.05);
+  animation: fachada 3.2s ease-out .2s both;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(15,12,10,.25) 0%, rgba(15,12,10,.55) 55%, var(--night) 100%),
+    radial-gradient(ellipse at 70% 30%, rgba(209,130,13,.18), transparent 60%);
+}
+@keyframes fachada {
+  from { filter: saturate(1.15) brightness(1.02) contrast(1); }
+  to   { filter: saturate(.78) brightness(.5) contrast(1.05); }
+}
+.hero .wrap { display: grid; gap: var(--s4); padding-block: clamp(4rem, 12vw, 9rem) var(--s5); }
+.hero__logo { width: min(640px, 100%); height: auto; }
+.hero__kicker { color: var(--pill); }
+.quote { display: grid; gap: var(--s1); max-width: 34ch; }
+.quote blockquote { margin: 0; font-style: italic; font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.35; }
+.quote figcaption { color: var(--muted); }
+.ctas { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.btn {
+  display: inline-flex; align-items: center; gap: .5em; padding: .8em 1.25em;
+  font-family: var(--mono); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--amber); color: var(--night); background: var(--amber); border-radius: 2px;
+}
+.btn:hover { background: var(--amber-hi); border-color: var(--amber-hi); }
+.btn--ghost { background: transparent; color: var(--cream); border-color: var(--line); }
+.btn--ghost:hover { background: var(--wall-2); border-color: var(--muted); }
+.btn--off { background: transparent; color: var(--muted); border: 1px dashed var(--line); cursor: default; }
+.btn--off:hover { background: transparent; border-color: var(--line); }
+
+/* ---------- la serie ---------- */
+.serie { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--s5); align-items: start; }
+.ficha { background: var(--wall); border: 1px solid var(--line); padding: var(--s3); display: grid; gap: var(--s2); }
+.ficha dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .55rem var(--s3); }
+.ficha dt { font-family: var(--mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: .25rem; }
+.ficha dd { margin: 0; font-size: 1.02rem; }
+.aviso { border-top: 1px solid var(--line); padding-top: var(--s2); font-size: .95rem; color: var(--muted); }
+.aviso strong { color: var(--pill); font-weight: 500; }
+.tema { margin-top: var(--s4); padding-left: var(--s3); border-left: 3px solid var(--amber); max-width: 58ch; }
+.tema p { font-size: 1.2rem; }
+
+/* ---------- capítulos ---------- */
+.caps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s3); }
+.cap { display: grid; grid-template-rows: auto 1fr; background: var(--wall); border: 1px solid var(--line); min-width: 0; }
+.cap__img { aspect-ratio: 4 / 5; max-width: 100%; background: var(--wall-2) center / cover no-repeat; position: relative; }
+.cap__num {
+  position: absolute; left: var(--s2); bottom: var(--s1);
+  font-family: var(--display); font-size: 5.5rem; line-height: .8; color: var(--cream);
+  text-shadow: 0 2px 18px rgba(0,0,0,.6);
+}
+.cap__body { display: grid; gap: var(--s2); padding: var(--s3); align-content: start; }
+.cap__body p { font-size: 1.02rem; color: #d9cfbd; }
+.cap__meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem var(--s2); }
+.chip { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; padding: .3em .6em; border-radius: 2px; }
+.chip--soon { background: var(--pill); color: var(--night); }
+.chip--ok { background: var(--amber); color: var(--night); }
+.chip--todo { border: 1px dashed var(--line); color: var(--muted); }
+.cap__actions { margin-top: auto; padding: 0 var(--s3) var(--s3); }
+/* capítulo 3: faros en la oscuridad, sin foto */
+.faros {
+  background:
+    radial-gradient(circle at 34% 58%, rgba(255,246,226,.95) 0 3.5%, rgba(255,226,170,.45) 8%, rgba(255,210,140,.12) 22%, transparent 34%),
+    radial-gradient(circle at 66% 58%, rgba(255,246,226,.95) 0 3.5%, rgba(255,226,170,.45) 8%, rgba(255,210,140,.12) 22%, transparent 34%),
+    linear-gradient(90deg, transparent 8%, rgba(255,236,200,.22) 34%, rgba(255,236,200,.22) 66%, transparent 92%) center 58% / 100% 2px no-repeat,
+    linear-gradient(180deg, #070505 0%, #120d0a 70%, #1c140f 100%);
+}
+
+/* ---------- personajes ---------- */
+.reparto { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--s5); align-items: start; }
+.oscar { display: grid; gap: var(--s2); }
+.oscar img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; max-width: 100%; display: block; }
+.personas { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.personas li { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: var(--s2); padding-block: var(--s2); border-bottom: 1px solid var(--line); }
+.personas li:first-child { border-top: 1px solid var(--line); }
+.personas h3 { font-size: 1.9rem; color: var(--amber); }
+.personas p { font-size: 1.02rem; }
+
+/* ---------- difusión ---------- */
+.difusion { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: var(--s5); align-items: start; }
+.reel { display: grid; gap: var(--s1); }
+.reel video { width: 100%; max-width: 100%; aspect-ratio: 9 / 16; background: #000; display: block; border: 1px solid var(--line); }
+.spots { display: grid; gap: var(--s2); margin: var(--s3) 0 0; padding: 0; list-style: none; }
+.spots li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--s2); padding: var(--s2); background: var(--wall); border: 1px solid var(--line); }
+.spots strong { font-family: var(--display); font-weight: 400; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .02em; }
+.spots span.label { display: block; margin-top: .2rem; }
+.ig { margin-top: var(--s3); display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+
+/* ---------- backstage ---------- */
+.bs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s2); }
+.bs-grid figure { margin: 0; display: grid; gap: .5rem; min-width: 0; }
+.bs-grid img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; max-width: 100%; }
+.slot { aspect-ratio: 4 / 3; max-width: 100%; border: 1px dashed var(--line); display: grid; place-items: center; text-align: center; padding: var(--s2); background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.02) 14px 28px); }
+.bs-grid figcaption { font-family: var(--mono); font-size: .74rem; letter-spacing: .06em; color: var(--muted); }
+.subhead { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--pill); margin: var(--s4) 0 var(--s2); }
+
+/* ---------- equipo ---------- */
+.tabla { overflow-x: auto; border: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 1rem; }
+th, td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-weight: 400; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); background: var(--wall); }
+td:first-child { font-family: var(--display); font-size: 1.25rem; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.areas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s2); margin-top: var(--s4); }
+.area { border-top: 2px solid var(--amber); padding-top: var(--s1); display: grid; gap: .35rem; align-content: start; min-width: 0; }
+.area b { font-family: var(--mono); font-weight: 500; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pill); }
+.area p { font-size: .95rem; color: #d9cfbd; }
+
+/* ---------- repositorio ---------- */
+.repo { background: var(--wall); }
+.repo-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4); }
+.repo-group h3 { font-size: 1.7rem; color: var(--amber); margin-bottom: var(--s2); }
+.items { list-style: none; margin: 0; padding: 0; display: grid; }
+.item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem var(--s2); padding-block: var(--s2); border-top: 1px solid var(--line); }
+.item:last-child { border-bottom: 1px solid var(--line); }
+.item__t { font-weight: 500; font-size: 1.08rem; }
+.item__d { grid-column: 1 / 2; font-size: .98rem; color: var(--muted); }
+.item__a { grid-row: 1 / 3; grid-column: 2; align-self: center; text-align: right; }
+.item__a a { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; }
+
+/* ---------- pie ---------- */
+.foot { border-top: 1px solid var(--line); padding-block: var(--s5) var(--s4); }
+.foot .wrap { display: grid; gap: var(--s4); }
+.ayuda { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s3); align-items: center; padding: var(--s3); border: 1px solid var(--pill); }
+.ayuda__num { font-family: var(--display); font-size: 4.2rem; line-height: .85; color: var(--pill); }
+.ayuda p { font-size: 1.05rem; }
+.inst { font-size: 1.05rem; max-width: 70ch; color: var(--cream); }
+.foot__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2); align-items: center; }
+.foot__row img { width: 150px; height: auto; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .serie, .reparto, .difusion { grid-template-columns: minmax(0, 1fr); gap: var(--s4); }
+  .caps { grid-template-columns: minmax(0, 1fr); }
+  .cap { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); grid-template-rows: auto auto; }
+  .cap__img { grid-row: 1 / 3; aspect-ratio: auto; min-height: 100%; }
+  .cap__actions { padding-top: 0; }
+  .repo-groups { grid-template-columns: minmax(0, 1fr); }
+  .reel { max-width: 360px; }
+  .band { padding-block: var(--s5); }
+}
+@media (max-width: 560px) {
+  body { font-size: 1.06rem; }
+  .bar__logo img { width: 92px; }
+  .cap { grid-template-columns: minmax(0, 1fr); }
+  .cap__img { grid-row: auto; aspect-ratio: 16 / 10; }
+  .cap__num { font-size: 4.2rem; }
+  .bs-grid { grid-template-columns: minmax(0, 1fr); }
+  .areas { grid-template-columns: minmax(0, 1fr); }
+  .personas li { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+  .ayuda { grid-template-columns: minmax(0, 1fr); }
+  .item { grid-template-columns: minmax(0, 1fr); }
+  .item__a { grid-row: auto; grid-column: 1; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero__img { animation: none; }
+}
+
+/* ---------- agregados ---------- */
+.alerta{background:var(--pill);color:var(--night);font-size:.95rem;line-height:1.4;padding:.6rem 0}
+.alerta .wrap{display:flex;gap:var(--s2);align-items:baseline}
+.alerta b{font-family:var(--display);font-weight:400;font-size:1.3rem;letter-spacing:.02em;flex:none}
+.alerta a{color:var(--night)}
+.hero__bajada{font-size:1.25rem;max-width:44ch;color:var(--cream)}
+.estrategia{margin-top:var(--s3);padding-left:var(--s3);border-left:3px solid var(--amber);max-width:62ch}
+.bloques{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-top:var(--s3)}
+.bloque{display:grid;gap:var(--s1);align-content:start;min-width:0}
+.bloque h3{color:var(--amber)}.bloque p{font-size:1.02rem;color:#d9cfbd}
+.tabla--wrap td:first-child{white-space:normal}.tabla+.subhead{margin-top:var(--s5)}
+.personas .actor{display:block;margin-top:.3rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem var(--s2);margin-top:var(--s2)}
+@media (max-width:860px){.bloques{grid-template-columns:minmax(0,1fr)}.alerta .wrap{flex-direction:column;gap:.2rem}}
+
+.igcards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s2);margin-top:var(--s3)}
+.igcard{display:grid;grid-template-rows:auto 1fr;background:var(--wall);border:1px solid var(--line);text-decoration:none;color:var(--cream);min-width:0;transition:border-color .2s,transform .2s}
+.igcard:hover,.igcard:focus-visible{border-color:var(--amber);transform:translateY(-3px)}
+.igcard__img{aspect-ratio:4/5;background:var(--wall-2) center/cover no-repeat}
+.igcard__img--logo{background-size:70%;background-color:var(--night)}
+.igcard__body{display:grid;gap:.5rem;padding:var(--s2);align-content:start}
+.igcard__body strong{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase;line-height:1.05}
+.igcard .label{color:var(--amber-hi)}
+.minis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.minis img{width:100%;height:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.minis img:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.bs-wide{margin:var(--s4) 0 0}.bs-wide img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;display:block}
+.bs-wide figcaption{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--muted);margin-top:.5rem}
+.galeria{margin-top:var(--s3)}
+.item__a{display:grid;gap:.4rem;justify-items:end}
+.tabla td a{color:var(--amber-hi)}
+@media (max-width:1000px){.igcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.igcards{grid-template-columns:minmax(0,1fr)}.igcard{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);grid-template-rows:auto}.igcard__img{aspect-ratio:auto;min-height:100%}.item__a{justify-items:start}}
+
+</style>
 </head>
 <body>
 
@@ -77,9 +338,7 @@
     </div></div>
   </section>
 
-  <!-- ===== CAPÍTULOS =====
-       Para publicar un capítulo: cambiá el chip "Próximo estreno" por <span class="chip chip--ok">Disponible</span>,
-       reemplazá el botón deshabilitado por <a class="btn" href="LINK-DE-YOUTUBE">Ver en YouTube</a> y actualizá la fecha. -->
+  <!-- Para publicar un capítulo: cambiá el chip "Próximo estreno" por <span class="chip chip--ok">Disponible en YouTube</span> y el botón gris por <a class="btn" href="LINK-DE-YOUTUBE">Ver en YouTube</a> -->
   <section class="band" id="capitulos">
     <div class="wrap">
       <div class="sec-head"><p class="label">Capítulos</p><h2>Tres capítulos, una decisión</h2></div>
@@ -98,18 +357,18 @@
           <div class="cap__body">
             <p class="label">Capítulo 2</p><h3 id="cap2-t">Quiebre</h3>
             <p>La confirmación de un embarazo enfrenta a Eva con un futuro que no puede postergar. Tras compartir sus temores con Romina, su amiga y médica, comprende que huir no es una opción segura y que necesita actuar. La tensión acumulada en el hogar la lleva a tomar una decisión irreversible.</p>
-            <div class="cap__meta"><span class="chip chip--soon">Próximo estreno</span><span class="pending">Fecha a confirmar</span></div>
+            <div class="cap__meta"><span class="chip chip--soon">Próximo estreno</span></div>
           </div>
-          <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">En YouTube el día del estreno</span></div>
+          <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">Próximamente en YouTube</span></div>
         </article>
         <article class="cap" aria-labelledby="cap3-t">
           <div class="cap__img faros" role="img" aria-label="Los faros de un auto en una calle a oscuras"><span class="cap__num" aria-hidden="true">3</span></div>
           <div class="cap__body">
             <p class="label">Capítulo 3</p><h3 id="cap3-t">No mires atrás</h3>
             <p>Una visita inesperada desata los celos de Oscar y quiebra el plan de Eva. La tensión contenida estalla en una confrontación directa y desesperada, en la que Eva deberá luchar por su vida y tomar una resolución definitiva para no mirar atrás.</p>
-            <div class="cap__meta"><span class="chip chip--soon">Próximo estreno</span><span class="pending">Fecha a confirmar</span></div>
+            <div class="cap__meta"><span class="chip chip--soon">Próximo estreno</span></div>
           </div>
-          <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">En YouTube el día del estreno</span></div>
+          <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">Próximamente en YouTube</span></div>
         </article>
       </div>
     </div>
@@ -155,13 +414,16 @@
         <div class="prose">
           <h3>Las reglas de una casa perfecta</h3>
           <p>Un reel vertical en el que Oscar, sentado a la mesa, intenta explicar lo que pasó la noche anterior. Muestra su cara amable y deja ver la amenaza. Lo hicimos con inteligencia artificial: HeyGen para animar a Oscar, ElevenLabs para la voz y los sonidos e Higgsfield para los planos de detalle.</p>
-          <ul class="spots" aria-label="Spots de los capítulos">
-            <li><div><strong>Spot · Capítulo 1</strong><span class="label">Instagram y TikTok · hasta 1 min</span></div><span class="chip chip--todo">En producción</span></li>
-            <li><div><strong>Spot · Capítulo 2</strong><span class="label">Instagram y TikTok · hasta 1 min</span></div><span class="chip chip--todo">En producción</span></li>
-            <li><div><strong>Spot · Capítulo 3</strong><span class="label">Instagram y TikTok · hasta 1 min</span></div><span class="chip chip--todo">En producción</span></li>
-          </ul>
-          <div class="ig"><a class="btn btn--ghost" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener">Ver en Instagram</a></div>
+          <div class="ig"><a class="btn btn--ghost" href="https://drive.google.com/file/d/16noXcJoSONvVjvDVgiQaioObpd8QGpyn/view" target="_blank" rel="noopener">Ver la pieza en Drive</a></div>
         </div>
+      </div>
+      <p class="subhead">Publicaciones oficiales en Instagram</p>
+      <div class="igcards">
+        <a class="igcard" href="https://www.instagram.com/reel/De-aeOlAfv4/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/whisky.jpg')" role="img" aria-label="Tráiler · Escena de tensión"></span><span class="igcard__body"><span class="chip chip--ok">Reel · 19 s</span><strong>Tráiler · Escena de tensión</strong><span class="label">Ver en Instagram ↗</span></span></a>
+        <a class="igcard" href="https://www.instagram.com/reel/De9YpHkAYJ8/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/comedor.jpg')" role="img" aria-label="Avance del capítulo 1"></span><span class="igcard__body"><span class="chip chip--ok">Reel · 16 s</span><strong>Avance del capítulo 1</strong><span class="label">Ver en Instagram ↗</span></span></a>
+        <a class="igcard" href="https://www.instagram.com/p/De8c0C-DOJR/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/bs-05.jpg')" role="img" aria-label="Fotos de rodaje y arte"></span><span class="igcard__body"><span class="chip chip--ok">Carrusel</span><strong>Fotos de rodaje y arte</strong><span class="label">Ver en Instagram ↗</span></span></a>
+        <a class="igcard" href="https://www.instagram.com/p/De9e8ktl_Y6/" target="_blank" rel="noopener"><span class="igcard__img" style="background-image:url('assets/oscar.jpg')" role="img" aria-label="Personajes: Eva y Oscar"></span><span class="igcard__body"><span class="chip chip--ok">Publicación</span><strong>Personajes: Eva y Oscar</strong><span class="label">Ver en Instagram ↗</span></span></a>
+        <a class="igcard" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener"><span class="igcard__img igcard__img--logo" style="background-image:url('assets/logo-sm.png')" role="img" aria-label="@mientrasteportesbien"></span><span class="igcard__body"><span class="chip chip--ok">Perfil oficial</span><strong>@mientrasteportesbien</strong><span class="label">Ver en Instagram ↗</span></span></a>
       </div>
     </div>
   </section>
@@ -174,11 +436,12 @@
         <p class="prose">El universo de <em>Mientras te portes bien</em> se construyó con un trabajo minucioso de puesta en escena, dirección de arte y ambientación de época. Esta sección reúne los registros del proceso creativo y del rodaje.</p>
       </div>
       <div class="bloques">
-        <div class="bloque"><h3>Detrás de cámara</h3><p>El trabajo del equipo técnico y artístico, la preparación de encuadres, luces y el rodaje en locación.</p><div class="slot"><span class="pending">Foto de rodaje<br>pendiente</span></div></div>
-        <div class="bloque"><h3>El universo de la serie</h3><p>La estética de los años 90 a través del vestuario, los objetos significativos, la utilería y la escenografía del hogar.</p><div class="slot"><span class="pending">Foto de dirección de arte<br>pendiente</span></div></div>
-        <div class="bloque"><h3>Del rodaje a la pantalla</h3><p>La evolución narrativa y el proceso técnico, desde el guion hasta el montaje final.</p><div class="slot"><span class="pending">Foto o video<br>pendiente</span></div></div>
+        <div class="bloque"><h3>Detrás de cámara</h3><p>El trabajo del equipo técnico y artístico, la preparación de encuadres, luces y el rodaje en locación.</p><div class="minis"><img src="assets/bs-01.jpg" alt="Operación de cámara durante una toma en el living" loading="lazy" width="1400" height="788"><img src="assets/bs-02.jpg" alt="Claqueta y jirafa de sonido antes de filmar" loading="lazy" width="1400" height="788"><img src="assets/bs-03.jpg" alt="El equipo con la jirafa de sonido bajo la luz cálida de la casa" loading="lazy" width="1400" height="788"></div></div>
+        <div class="bloque"><h3>El universo de la serie</h3><p>La estética de los años 90 a través del vestuario, los objetos significativos, la utilería y la escenografía del hogar.</p><div class="minis"><img src="assets/bs-04.jpg" alt="Maquillaje y peinado del elenco antes de filmar" loading="lazy" width="1400" height="788"><img src="assets/bs-05.jpg" alt="Un ramo de flores sobre la mesa, con luz azul en la ventana" loading="lazy" width="1400" height="788"><img src="assets/bs-06.jpg" alt="Escena entre dos personajes, con vestuario y maquillaje de continuidad" loading="lazy" width="1400" height="788"></div></div>
+        <div class="bloque"><h3>Del rodaje a la pantalla</h3><p>La evolución narrativa y el proceso técnico, desde el guion hasta el montaje final.</p><div class="minis"><img src="assets/bs-07.jpg" alt="Cámara con monitor de campo durante el rodaje" loading="lazy" width="1400" height="788"><img src="assets/bs-08.jpg" alt="El equipo mirando el monitor con la imagen de la escena" loading="lazy" width="1400" height="788"><img src="assets/bs-09.jpg" alt="Monitor de campo en la oscuridad de la locación" loading="lazy" width="1400" height="788"></div></div>
       </div>
-      <!-- Para reemplazar un recuadro: poné la foto en assets/ y cambiá <div class="slot">…</div> por <img src="assets/NOMBRE.jpg" alt="descripción"> -->
+      <figure class="bs-wide"><img src="assets/bs-10.jpg" alt="El equipo de realización reunido en la locación" loading="lazy" width="1400" height="788"><figcaption>El equipo de realización reunido en la locación</figcaption></figure>
+      <div class="ctas galeria"><a class="btn" href="https://drive.google.com/drive/folders/1WjcK-pxsHIi9lFhFVic_tJrG7EprTdwW" target="_blank" rel="noopener">Explorar galería completa de fotos del rodaje</a></div>
       <p class="subhead">Cómo hicimos el reel de Oscar</p>
       <div class="bs-grid">
         <figure><img src="assets/comedor.jpg" alt="Oscar ubicado en el comedor de la locación" width="1024" height="760"><figcaption>Oscar en el comedor de la locación, armado a partir de dos fotos</figcaption></figure>
@@ -197,18 +460,27 @@
       </div>
       <p class="subhead" style="margin-top:0">A · Realización audiovisual · TRTV y EeI</p>
       <div class="tabla"><table>
-        <thead><tr><th scope="col">Rol</th><th scope="col">Integrante</th></tr></thead>
+        <thead><tr><th scope="col">Personaje</th><th scope="col">Intérprete</th></tr></thead>
         <tbody>
-          <tr><td>Eva</td><td>Rocío Álvarez</td></tr>
-          <tr><td>Oscar</td><td>Gustavo Máximo Luna</td></tr>
-          <tr><td>Romina</td><td>María Elena Ventura</td></tr>
-          <tr><td>Martín</td><td>Matías Albarracín</td></tr>
-          <tr><td>Carlos</td><td>Mario Ariel Encina Lanús</td></tr>
-          <tr><td>Pedro</td><td>Facundo García</td></tr>
+          <tr><td>Eva</td><td>Rocío Álvarez</td></tr><tr><td>Oscar</td><td>Gustavo Máximo Luna</td></tr>
+          <tr><td>Romina</td><td>María Elena Ventura</td></tr><tr><td>Martín</td><td>Matías Albarracín</td></tr>
+          <tr><td>Carlos</td><td>Mario Ariel Encina Lanús</td></tr><tr><td>Pedro</td><td>Facundo García</td></tr>
           <tr><td>María</td><td>Candelaria Medina Ávalo</td></tr>
-          <tr><td>Equipo técnico</td><td class="pending">Guion, dirección, fotografía, sonido, arte y montaje: nombres a confirmar según los créditos finales</td></tr>
         </tbody>
       </table></div>
+      <p class="subhead">Créditos técnicos</p>
+      <div class="tabla tabla--wrap"><table>
+        <thead><tr><th scope="col">Área</th><th scope="col">Qué abarca</th><th scope="col">Material de referencia</th></tr></thead>
+        <tbody>
+          <tr><td>Dirección</td><td>Puesta en escena, dirección de actores y organización de las tres jornadas de rodaje.</td><td><a href="https://docs.google.com/document/d/12HbfQ0L4gLW7zCj960Hgb6vB8TjhnvlBdiuN8Pj1pc4/edit" target="_blank" rel="noopener">Plan de rodaje</a></td></tr>
+          <tr><td>Guion</td><td>Guion literario y guion técnico de los tres capítulos, con diálogos, acciones y sonido.</td><td><a href="https://docs.google.com/spreadsheets/d/1205DbxyRh4ynksod30rZ9QiRtrtd_O63obgEMYRIyKQ/edit" target="_blank" rel="noopener">Guion técnico completo</a></td></tr>
+          <tr><td>Fotografía</td><td>Planos, ángulos y movimientos de cámara. Se filmó con cámaras Sony a7 III y ZV-E10.</td><td><a href="https://docs.google.com/spreadsheets/d/1-IkHmNNc6CTwjseoDvuZHPOM9Dsv2IY-ghY6BL_V1eE/edit" target="_blank" rel="noopener">Guion técnico</a></td></tr>
+          <tr><td>Sonido</td><td>Sonido directo, foley, música de época y risas de sitcom que se cortan en la violencia.</td><td><a href="https://docs.google.com/spreadsheets/d/1-IkHmNNc6CTwjseoDvuZHPOM9Dsv2IY-ghY6BL_V1eE/edit" target="_blank" rel="noopener">Guion técnico</a></td></tr>
+          <tr><td>Arte</td><td>Ambientación de los años 90, utilería, vestuario, maquillaje de continuidad y locación.</td><td><a href="https://docs.google.com/document/d/12HbfQ0L4gLW7zCj960Hgb6vB8TjhnvlBdiuN8Pj1pc4/edit" target="_blank" rel="noopener">Plan de rodaje</a></td></tr>
+          <tr><td>Montaje</td><td>Ritmo, pasaje de la estética sitcom al thriller y continuidad de las escenas.</td><td><a href="https://docs.google.com/document/d/12HbfQ0L4gLW7zCj960Hgb6vB8TjhnvlBdiuN8Pj1pc4/edit" target="_blank" rel="noopener">Plan de rodaje</a></td></tr>
+        </tbody>
+      </table></div>
+      <p class="label" style="margin-top:var(--s2)">Cada integrante figura con su nombre en los créditos finales de los capítulos.</p>
       <p class="subhead">B · Desarrollo web y difusión en redes · TECI-II</p>
       <div class="tabla tabla--wrap"><table>
         <thead><tr><th scope="col">Equipo</th><th scope="col">Integrantes</th><th scope="col">Responsabilidad</th></tr></thead>
@@ -216,7 +488,7 @@
           <tr><td>1 · Sitio web</td><td>Ezequiel Viale</td><td>Arquitectura, maquetado, integración y verificación técnica.</td></tr>
           <tr><td>2 · Estética y contenidos web</td><td>Tatiana Barrera, Alessia Chitto, Lola Martínez, Florencia Lastra, Jazmín Regondi, Nicanor Altamirano</td><td>Identidad visual, textos, backstage y repositorio.</td></tr>
           <tr><td>3 · Contenidos para redes</td><td>Bacile, Faginoli, Lima, Pinelle, Salomón</td><td>Guion, edición, sonido y gráfica de los spots.</td></tr>
-          <tr><td>4 · Investigación y guía de redes</td><td class="pending">A confirmar</td><td>Instagram y TikTok, perfiles y guía de publicación.</td></tr>
+          <tr><td>4 · Investigación y guía de redes</td><td>Cuatro integrantes, uno por rol</td><td>Investigación de Instagram y de TikTok (funcionamiento, público, formatos e interacción), configuración de las cuentas y adaptación editorial (escritura, etiquetas, menciones y portadas).</td></tr>
           <tr><td>5 · Promoción y audiencia</td><td>Cristóbal Lühning, Lorenzo Díaz, Gina Roberts, Manuel González</td><td>Calendario, publicación, comentarios y métricas.</td></tr>
         </tbody>
       </table></div>
@@ -230,18 +502,23 @@
         <p class="prose">Las actividades de TECI-II y los documentos de producción de la serie, en un solo lugar.</p></div>
       <div class="repo-groups">
         <div class="repo-group"><h3>TECI-II</h3><ul class="items">
-          <li class="item"><span class="item__t">Videopodcast · Actividad 1</span><span class="item__d">Producción audiovisual inicial de integración de contenidos académicos.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
-          <li class="item"><span class="item__t">“Las reglas de una casa perfecta” · Actividad 2</span><span class="item__d">Promo técnica realizada con inteligencia artificial sobre la perspectiva de Oscar.</span><span class="item__a"><a href="#difusion">Ver video</a></span></li>
+          <li class="item"><span class="item__t">Actividad 1 · UBP Got Talent</span><span class="item__d">Informe de streaming en vivo con relevamiento técnico de los estudios UBP e IDOTV. Barrera, Díaz, Mudra, Martínez, Regondi y Roberts.</span><span class="item__a"><a href="docs/act1-ubp-got-talent.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 1 · El cine nos une</span><span class="item__d">Informe de producción de streaming y videopodcast, con diagrama en bloques y pruebas en OBS. Altamirano, Ferreyra, Faletti, Masi, Viale y Yerio.</span><span class="item__a"><a href="docs/act1-el-cine-nos-une.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 1 · Fuera de cuadro</span><span class="item__d">Episodio 1 del videopodcast: “¿Quiénes somos cuando nadie nos mira?”. Lastra, Chito, Luhning, González y Actis.</span><span class="item__a"><a href="docs/act1-fuera-de-cuadro.pdf" target="_blank" rel="noopener">Abrir PDF</a><a href="https://drive.google.com/file/d/1xABzYIuROT7oFoebrIXh1OF-NgqpAG4H/view?usp=sharing" target="_blank" rel="noopener">Ver programa</a></span></li>
+          <li class="item"><span class="item__t">Actividad 1 · Cosmeticorexia</span><span class="item__d">Informe “Explorando el streaming”. Bacile, Faginoli, Lima, Pinelle y Salomón.</span><span class="item__a"><a href="docs/act1-cosmeticorexia.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 2 · Personaje: Oscar</span><span class="item__d">Caracterización de Oscar, guion técnico del video y uso de inteligencia artificial.</span><span class="item__a"><a href="docs/act2-personaje-oscar.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 2 · Capítulo 3 con IA</span><span class="item__d">Entrega con pieza vertical 9:16 hecha con HeyGen, Adobe Firefly y CapCut, y ficha de la serie.</span><span class="item__a"><a href="docs/act2-capitulo-3.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
+          <li class="item"><span class="item__t">Actividad 2 · “Las reglas de una casa perfecta”</span><span class="item__d">Promo técnica con inteligencia artificial sobre la perspectiva de Oscar.</span><span class="item__a"><a href="https://drive.google.com/file/d/16noXcJoSONvVjvDVgiQaioObpd8QGpyn/view" target="_blank" rel="noopener">Ver en Drive</a><a href="#difusion" target="_blank" rel="noopener">Ver en esta web</a></span></li>
           <li class="item"><span class="item__t">Actividad 3 · Estética y contenidos web</span><span class="item__d">Identidad visual, redacción de contenidos y backstage.</span><span class="item__a"><a href="docs/act-3-tecii.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
           <li class="item"><span class="item__t">Actividad 3 · Investigación de redes</span><span class="item__d">Informe sobre Instagram y YouTube, estrategia y configuración de cuentas.</span><span class="item__a"><a href="docs/tecii-tp-3.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
           <li class="item"><span class="item__t">Actividad 3 · Contenidos para redes</span><span class="item__d">Propuesta promocional y guiones de los spots.</span><span class="item__a"><a href="docs/trabajo-practico-3.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
           <li class="item"><span class="item__t">Actividad 3 · Promoción y seguimiento de audiencia</span><span class="item__d">Plan de campaña, calendario y métricas.</span><span class="item__a"><a href="docs/actividad-3-objetivo-5.pdf" target="_blank" rel="noopener">Abrir PDF</a></span></li>
         </ul></div>
         <div class="repo-group"><h3>TRTV y EeI</h3><ul class="items">
-          <li class="item"><span class="item__t">Guion técnico · Capítulo 1 · Apariencia</span><span class="item__d">Guion técnico completo del primer capítulo.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
-          <li class="item"><span class="item__t">Guion técnico · Capítulo 2 · Quiebre</span><span class="item__d">Guion técnico completo del segundo capítulo.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
-          <li class="item"><span class="item__t">Guion técnico · Capítulo 3 · No mires atrás</span><span class="item__d">Guion técnico completo del tercer capítulo.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
-          <li class="item"><span class="item__t">Plan de rodaje</span><span class="item__d">Plan de rodaje oficial de la serie.</span><span class="item__a"><span class="chip chip--todo">Enlace pendiente</span></span></li>
+          <li class="item"><span class="item__t">Guion técnico completo</span><span class="item__d">Plano por plano: tipo de plano, cámara, ángulo, acción, sonido y diálogo de los capítulos 1 y 2.</span><span class="item__a"><a href="https://docs.google.com/spreadsheets/d/1205DbxyRh4ynksod30rZ9QiRtrtd_O63obgEMYRIyKQ/edit" target="_blank" rel="noopener">Abrir hoja</a></span></li>
+          <li class="item"><span class="item__t">Guion técnico</span><span class="item__d">Versión con diálogos y equipo de cámara de los capítulos 1, 2 y 3.</span><span class="item__a"><a href="https://docs.google.com/spreadsheets/d/1-IkHmNNc6CTwjseoDvuZHPOM9Dsv2IY-ghY6BL_V1eE/edit" target="_blank" rel="noopener">Abrir hoja</a></span></li>
+          <li class="item"><span class="item__t">Plan de rodaje oficial</span><span class="item__d">Cronograma de las tres jornadas de filmación con escenas, horarios y pausas.</span><span class="item__a"><a href="https://docs.google.com/document/d/12HbfQ0L4gLW7zCj960Hgb6vB8TjhnvlBdiuN8Pj1pc4/edit" target="_blank" rel="noopener">Abrir documento</a></span></li>
+          <li class="item"><span class="item__t">Carpeta general del proyecto</span><span class="item__d">Todo el material de la serie en Google Drive.</span><span class="item__a"><a href="https://drive.google.com/drive/folders/1Mx82Fde5W8chtJjj-Jg1fuRld80pOhZf" target="_blank" rel="noopener">Abrir carpeta</a></span></li>
         </ul></div>
       </div>
     </div>
