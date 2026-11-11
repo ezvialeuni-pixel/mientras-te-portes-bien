@@ -1,5 +1,5 @@
 # Mientras te portes bien · Sitio web
-Un solo archivo (index.html, con el CSS adentro) más las carpetas assets/ y docs/. Sin instalación ni build.
+Un solo archivo (index.html, con el CSS y las fotos del backstage adentro) más las carpetas assets/ y docs/. Sin instalación ni build.
 
 ## Publicar en GitHub Pages
 1. Subí TODO el contenido de esta carpeta a un repositorio público (index.html en la raíz, junto a assets/ y docs/).
