@@ -279,6 +279,16 @@ tr:last-child td { border-bottom: 0; }
 .nombres li{display:grid;gap:.3rem;padding:var(--s3) var(--s2);border-bottom:1px solid var(--line)}
 .nombres h3{font-size:2.4rem;color:var(--amber)}
 .tabla .grupo th{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em;color:var(--amber);background:var(--night);padding-top:1.1rem}
+.spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s3);margin-top:var(--s2)}
+.spot,.meme{margin:0;display:grid;gap:.6rem;align-content:start;min-width:0}
+.spot video{width:100%;aspect-ratio:9/16;max-height:640px;background:#000;display:block;object-fit:contain}
+.spot figcaption,.meme figcaption{display:flex;flex-wrap:wrap;gap:.4rem .75rem;align-items:center}
+.spot strong,.meme strong{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase}
+.memes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--s3);margin-top:var(--s2)}
+.meme>img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;display:block}
+.carrusel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+.carrusel img{flex:0 0 min(78%,340px);aspect-ratio:1;object-fit:cover;scroll-snap-align:start}
+@media (max-width:760px){.memes{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -353,7 +363,7 @@ tr:last-child td { border-bottom: 0; }
       <div class="sec-head"><p class="label">Capítulos</p><h2>Tres capítulos, una decisión</h2></div>
       <div class="caps">
         <article class="cap" aria-labelledby="cap1-t">
-          <div class="cap__img" style="background-image:url('assets/comedor.jpg');background-position:center 40%" role="img" aria-label="Oscar en la mesa del comedor"><span class="cap__num" aria-hidden="true">1</span></div>
+          <div class="cap__img" style="background-image:url('assets/cap1.jpg');background-position:center 35%" role="img" aria-label="Eva le limpia la cara a Oscar en la mesa del comedor"><span class="cap__num" aria-hidden="true">1</span></div>
           <div class="cap__body">
             <p class="label">Capítulo 1</p><h3 id="cap1-t">Apariencia</h3>
             <p>En una reunión de amigos para ver un partido de fútbol, Oscar despliega su encanto y simpatía habitual mientras Eva cumple el rol de la esposa perfecta. Entre bromas y comentarios cotidianos, pequeñas fisuras revelan que algo no está bien. Cuando los invitados se van y la puerta se cierra, la fachada cómica se derrumba para dar paso a una amenaza silenciosa.</p>
@@ -362,7 +372,7 @@ tr:last-child td { border-bottom: 0; }
           <div class="cap__actions"><!-- reemplazá href por el link del capítulo --><a class="btn" href="https://www.youtube.com/@mientrasteportesbien" target="_blank" rel="noopener">Ver en YouTube</a></div>
         </article>
         <article class="cap" aria-labelledby="cap2-t">
-          <div class="cap__img" style="background-image:url('assets/whisky.jpg');background-position:center 45%" role="img" aria-label="Un vaso de whisky con hielo sobre la mesa"><span class="cap__num" aria-hidden="true">2</span></div>
+          <div class="cap__img" style="background-image:url('assets/cap2.jpg');background-position:center 40%" role="img" aria-label="Oscar bebiendo whisky en el sillón, junto a una lámpara y una licorera"><span class="cap__num" aria-hidden="true">2</span></div>
           <div class="cap__body">
             <p class="label">Capítulo 2</p><h3 id="cap2-t">Quiebre</h3>
             <p>La confirmación de un embarazo enfrenta a Eva con un futuro que no puede postergar. Tras compartir sus temores con Romina, su amiga y médica, comprende que huir no es una opción segura y que necesita actuar. La tensión acumulada en el hogar la lleva a tomar una decisión irreversible.</p>
@@ -371,7 +381,7 @@ tr:last-child td { border-bottom: 0; }
           <div class="cap__actions"><span class="btn btn--off" aria-disabled="true">Próximamente en YouTube</span></div>
         </article>
         <article class="cap" aria-labelledby="cap3-t">
-          <div class="cap__img faros" role="img" aria-label="Los faros de un auto en una calle a oscuras"><span class="cap__num" aria-hidden="true">3</span></div>
+          <div class="cap__img" style="background-image:url('assets/cap3.jpg');background-position:center 50%" role="img" aria-label="Eva y Oscar con la ropa manchada de sangre"><span class="cap__num" aria-hidden="true">3</span></div>
           <div class="cap__body">
             <p class="label">Capítulo 3</p><h3 id="cap3-t">No mires atrás</h3>
             <p>Una visita inesperada desata los celos de Oscar y quiebra el plan de Eva. La tensión contenida estalla en una confrontación directa y desesperada, en la que Eva deberá luchar por su vida y tomar una resolución definitiva para no mirar atrás.</p>
@@ -386,7 +396,7 @@ tr:last-child td { border-bottom: 0; }
   <!-- ===== PERSONAJES ===== -->
   <section class="band" id="personajes">
     <div class="wrap">
-      <div class="sec-head"><p class="label">Personajes y elenco</p><h2>Quiénes viven en esta casa</h2></div>
+      <div class="sec-head"><p class="label">La serie</p><h2>Personajes y elenco</h2></div>
       <ul class="nombres">
         <li><h3>Eva</h3><span class="label">Rocío Álvarez</span></li>
         <li><h3>Oscar</h3><span class="label">Gustavo Máximo Luna</span></li>
@@ -424,6 +434,23 @@ tr:last-child td { border-bottom: 0; }
         <figure class="igembed"><iframe src="https://www.instagram.com/reel/Dep7jdvxZTG/embed/" title="Contenido de redes" loading="lazy" scrolling="no" allowfullscreen></iframe><figcaption><strong>Contenido de redes</strong><a class="label" href="https://www.instagram.com/reel/Dep7jdvxZTG/" target="_blank" rel="noopener">Ver en Instagram ↗</a></figcaption></figure>
       </div>
       <div class="ctas galeria"><a class="btn" href="https://www.instagram.com/mientrasteportesbien/" target="_blank" rel="noopener">Ver el perfil @mientrasteportesbien</a></div>
+      <p class="subhead">Spots y videos de la serie</p>
+      <div class="spots">
+        <figure class="spot"><video controls playsinline preload="none" poster="assets/spot-whisky-poster.jpg" src="assets/spot-whisky.mp4" aria-label="Frená el whisky en el momento justo"></video><figcaption><span class="chip chip--ok">Spot · 7 s</span><strong>Frená el whisky en el momento justo</strong></figcaption></figure>
+        <figure class="spot"><video controls playsinline preload="none" poster="assets/spot-personaje-poster.jpg" src="assets/spot-personaje.mp4" aria-label="¿Qué personaje sos?"></video><figcaption><span class="chip chip--ok">Video · 9 s</span><strong>¿Qué personaje sos?</strong></figcaption></figure>
+        <figure class="spot"><video controls playsinline preload="none" poster="assets/spot-carlos-poster.jpg" src="assets/spot-carlos.mp4" aria-label="Carlos Core"></video><figcaption><span class="chip chip--ok">Video · 36 s</span><strong>Carlos Core</strong></figcaption></figure>
+      </div>
+      <p class="subhead">Memes</p>
+      <div class="memes">
+        <figure class="meme"><img src="assets/meme-mismo-hombre.jpg" alt="Meme: mi amiga y yo viendo al mismo hombre, con dos escenas de la serie" loading="lazy" width="900" height="900"><figcaption><span class="chip chip--ok">Meme</span><strong>Mi amiga y yo viendo al mismo hombre</strong></figcaption></figure>
+        <figure class="meme meme--car"><div class="carrusel" tabindex="0" aria-label="Carrusel de memes de personajes. Deslizá para ver más">
+          <img src="assets/meme-eva.jpg" alt="Meme de Eva en formato Drake" loading="lazy" width="900" height="900">
+          <img src="assets/meme-oscar.jpg" alt="Meme de Oscar en formato Drake" loading="lazy" width="900" height="900">
+          <img src="assets/meme-romina.jpg" alt="Meme de Romina en formato Drake" loading="lazy" width="900" height="900">
+          <img src="assets/meme-martin.jpg" alt="Meme de Martín en formato Drake" loading="lazy" width="900" height="900">
+          <img src="assets/meme-maria.jpg" alt="Meme de María en formato Drake" loading="lazy" width="900" height="900">
+        </div><figcaption><span class="chip chip--ok">Carrusel · 5 memes</span><strong>Los personajes, versión meme</strong></figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -516,9 +543,9 @@ tr:last-child td { border-bottom: 0; }
         <thead><tr><th scope="col">Equipo</th><th scope="col">Integrantes</th><th scope="col">Responsabilidad</th></tr></thead>
         <tbody>
           <tr><td>1 · Sitio web</td><td>Ezequiel Viale, Alessia Chitto, Nicanor Altamirano, Josefina Faginoli</td><td>Arquitectura, maquetado, integración y verificación técnica.</td></tr>
-          <tr><td>2 · Estética y contenidos web</td><td>Tatiana Barrera, Alessia Chitto, Lola Martínez, Florencia Lastra, Jazmín Regondi, Nicanor Altamirano</td><td>Identidad visual, textos, backstage y repositorio.</td></tr>
+          <tr><td>2 · Estética y contenidos web</td><td>Valentín Ferreyra, Martina Faletti, Lucía Masi, Josefina Yerio</td><td>Identidad visual, textos, backstage y repositorio.</td></tr>
           <tr><td>3 · Contenidos para redes</td><td>Bacile, Faginoli, Lima, Pinelle, Salomón</td><td>Guion, edición, sonido y gráfica de los spots.</td></tr>
-          <tr><td>4 · Investigación y guía de redes</td><td>Cuatro integrantes, uno por rol</td><td>Investigación de Instagram y de TikTok (funcionamiento, público, formatos e interacción), configuración de las cuentas y adaptación editorial (escritura, etiquetas, menciones y portadas).</td></tr>
+          <tr><td>4 · Investigación y guía de redes</td><td>Tatiana Barrera, Alessia Chitto, Lola Martínez, Florencia Lastra, Jazmín Regondi, Nicanor Altamirano</td><td>Investigación de Instagram y de TikTok (funcionamiento, público, formatos e interacción), configuración de las cuentas y adaptación editorial (escritura, etiquetas, menciones y portadas).</td></tr>
           <tr><td>5 · Promoción y audiencia</td><td>Cristóbal Lühning, Lorenzo Díaz, Gina Roberts, Manuel González</td><td>Calendario, publicación, comentarios y métricas.</td></tr>
         </tbody>
       </table></div>
